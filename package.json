@@ -1,0 +1,22 @@
+{
+  "name": "gofit",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "react-native start",
+    "bundle:android": "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/"
+  },
+  "dependencies": {
+    "frisbee": "^0.2.0",
+    "react": "^0.14.8",
+    "react-native": "^0.25.1",
+    "react-native-material-design": "^0.3.5",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0"
+  },
+  "devDependencies": {
+    "react-native-player": "0.0.9",
+    "redux-logger": "^2.6.1"
+  }
+}
