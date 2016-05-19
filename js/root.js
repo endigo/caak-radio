@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
+import Platform from 'Platform';
 import configureStore from './store/configureStore';
-
-import App from './containers/app'
+import AppContainerIOS from './containers/AppContainerIOS';
+import AppContainerAndroid from './containers/AppContainerAndroid';
 
 const store = configureStore()
 
@@ -10,7 +11,11 @@ class Root extends React.Component {
   render () {
     return (
       <Provider store={store}>
-        <App />
+        {
+          Platform.OS === 'ios' ?
+          <AppContainerIOS/> :
+          <AppContainerAndroid/>
+        }
       </Provider>
     )
   }

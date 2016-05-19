@@ -5,7 +5,7 @@ import {
   Text,
   View,
   ListView,
-  StatusBar,  
+  StatusBar,
   Image,
   DeviceEventEmitter,
   Dimensions
@@ -87,19 +87,19 @@ class AppContainer extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar          
+        <StatusBar
           transclude={true}
           backgroundColor="#0077AA"
           barStyle="light-content"
           />
         <Header title="Radio"/>
-        
+
         <View style={styles.infoContainer}>
           <Playlist {...this.props}
             play={this.play.bind(this)} />
         </View>
         <Footer  {...this.props}
-          isPlaying={types.PLAYER_STATUS_PLAYING === this.props.status} 
+          isPlaying={types.PLAYER_STATUS_PLAYING === this.props.status}
           resume={this.resume.bind(this)}
           pause={this.pause.bind(this)}
           track={this.state.track}/>

@@ -4,6 +4,7 @@ import StyleSheet from 'StyleSheet';
 import TouchableOpacity from 'TouchableOpacity';
 import View from 'View';
 import Image from 'Image';
+import Text from 'Text';
 import ToolbarAndroid from 'ToolbarAndroid';
 import Dimensions from 'Dimensions';
 
@@ -13,33 +14,11 @@ const STATUS_BAR_HEIGHT = Platform.OS === 'ios' ? 20 : 25;
 const HEADER_HEIGHT = Platform.OS === 'ios' ? 44 + STATUS_BAR_HEIGHT : 56 + STATUS_BAR_HEIGHT;
 
 class HeaderAndroid extends React.Component {
-
 	render(){
-		let actions = [
-  //   {
-		// 	title: 'Монгол',
-		// 	show: 'always'
-		// },{
-  //     title: 'Гадаад',
-  //     show: 'always'
-  //   }
-    ];
-
-		// return (
-		// 	<View style={[styles.toolbarContainer, this.props.style]}>
-		// 		<ToolbarAndroid 
-		// 			navIcon={require('./img/hamburger.png')}
-		// 			onIconClicked={this.props.onMenuPress}
-		// 			title={this.props.title}
-		// 			titleColor='white'
-		// 			actions={actions}
-		// 			style={styles.toolbar}>
-		// 		</ToolbarAndroid>
-		// 	</View>
-		// )
+		let actions = [];
     return (
       <View style={[styles.toolbarContainer, this.props.style]}>
-        <ToolbarAndroid 
+        <ToolbarAndroid
           logo={require('./img/logo.png')}
           title={this.props.title}
           titleColor='white'
@@ -48,6 +27,19 @@ class HeaderAndroid extends React.Component {
         </ToolbarAndroid>
       </View>
     )
+	}
+}
+
+class HeaderIOS extends React.Component {
+	render(){
+		return (
+			<View style={[styles.toolbarContainer, this.props.style]}>
+				<View style={[styles.toolbar, iosStyles.toolbar]}>
+					<Image source={require('./img/logo.png')} style={iosStyles.logo}/>
+					<Text style={iosStyles.title}>{this.props.title}</Text>
+				</View>
+			</View>
+		)
 	}
 }
 
@@ -63,13 +55,24 @@ let styles = StyleSheet.create({
     height: 75,
     flex: 1
   },
-  headerImage: {
-    width: SCREEN_WIDTH,
-    height: 75
-  },  
+}), iosStyles = StyleSheet.create({
+  toolbar: {
+		height: HEADER_HEIGHT,
+		paddingTop: STATUS_BAR_HEIGHT/2,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center'
+  },
+	logo: {
+		marginRight: 5
+	},
+	title: {
+		color: '#fff',
+		fontSize: 24
+	}
 });
 
-const Header = Platform.OS === 'ios' ? null : HeaderAndroid;
+const Header = Platform.OS === 'ios' ? HeaderIOS : HeaderAndroid;
 Header.height = HEADER_HEIGHT;
 
 export default Header;
