@@ -7,6 +7,7 @@ Caak Radio player in React Native
 3. React-redux  
 4. Redux-logger
 5. React-native-player - only android  
+6. React-native-ios-network-audio - only ios
 
 ## Ажиллуулах
 1. ```git clone https://github.com/ENDiGo/caak-radio.git```    
